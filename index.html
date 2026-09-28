@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NEXORA INNOVATORS | Engineering Ideas. Creating the Future.</title>
+<meta name="description" content="NEXORA INNOVATORS - a team of young innovators building robotics, electronics, AI and software projects." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>" />
+
+<!-- Speed up the Firebase network handshake -->
+<link rel="preconnect" href="https://firestore.googleapis.com" />
+<link rel="preconnect" href="https://identitytoolkit.googleapis.com" />
+<link rel="preconnect" href="https://firebasestorage.googleapis.com" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- Background FX -->
+<div class="bg-fx" aria-hidden="true">
+  <canvas id="particles"></canvas>
+  <div class="grid-overlay"></div>
+</div>
+
+<!-- Navbar -->
+<header class="nx-nav" id="nx-nav">
+  <div class="nx-nav-inner">
+    <a href="#/home" class="nx-logo">NEXORA <span>INNOVATORS</span></a>
+    <nav class="nx-links" id="nx-links">
+      <a href="#/home" data-route="/home">Home</a>
+      <a href="#/team" data-route="/team">Team</a>
+      <a href="#/technology" data-route="/technology">Technology</a>
+      <a href="#/electronics" data-route="/electronics">Electronics</a>
+      <a href="#/learning" data-route="/learning">Learning Hub</a>
+      <a href="#/projects" data-route="/projects">Projects</a>
+      <a href="#/research" data-route="/research">Research</a>
+      <a href="#/updates" data-route="/updates">Updates</a>
+      <a href="#/journey" data-route="/journey">Our Journey</a>
+      <a href="#/contact" data-route="/contact">Contact</a>
+    </nav>
+    <button id="nx-burger" class="nx-burger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- App Root -->
+<main id="app" class="nx-app"></main>
+
+<!-- Footer -->
+<footer class="nx-footer">
+  <h3>NEXORA <span style="color:var(--accent-red);">INNOVATORS</span></h3>
+  <div class="tag" id="footer-tag">Innovation • Technology • Teamwork</div>
+  <div style="opacity:.5;font-size:13px;">&copy; <span id="footer-year"></span> NEXORA INNOVATORS. All rights reserved.</div>
+  <div class="credit">Design and Developed by <b>Denith Vincent</b></div>
+  <div class="footer-socials" style="margin-top:14px;">
+    <a href="https://whatsapp.com/channel/0029VbD7ZgEInlqQB8BaiW22" target="_blank" rel="noopener">WhatsApp Channel</a>
+    <a href="https://www.youtube.com/@NEXORAINNOVATORS" target="_blank" rel="noopener">YouTube</a>
+  </div>
+  <div style="margin-top:18px;"><a href="#/admin/login" data-route="/admin/login" class="nx-admin-link">Admin</a></div>
+</footer>
+
+<!-- Toast container -->
+<div id="toast-root" class="toast-root"></div>
+
+<!-- Confirm dialog root -->
+<div id="confirm-root"></div>
+
+<script type="module" src="js/firebase.js"></script>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+rules_version = '2';
+
+function isAdmin() {
+  return request.auth != null
+    && request.auth.token.email == "admin@nexorainnovators.app";
+}
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /projects/{docId} {
+      allow read: if resource.data.published == true || isAdmin();
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /contactConversations/{conversationId} {
+      allow create: if request.auth != null
+        && request.resource.data.ownerUid == request.auth.uid;
+      allow read: if isAdmin()
+        || (request.auth != null && resource.data.ownerUid == request.auth.uid);
+      allow update: if isAdmin()
+        || (request.auth != null && resource.data.ownerUid == request.auth.uid);
+      allow delete: if isAdmin();
+
+      match /messages/{messageId} {
+        allow read: if isAdmin()
+          || (request.auth != null
+              && get(/databases/$(database)/documents/contactConversations/$(conversationId)).data.ownerUid == request.auth.uid);
+        allow create: if request.auth != null
+          && request.resource.data.senderUid == request.auth.uid
+          && (
+            isAdmin()
+            || get(/databases/$(database)/documents/contactConversations/$(conversationId)).data.ownerUid == request.auth.uid
+          );
+        allow update, delete: if isAdmin();
+      }
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
